@@ -1,0 +1,27 @@
+server:
+  servlet:
+    context-path: /crypto
+  port: ${SERVER_PORT:8089}
+
+spring:
+  main:
+    allow-circular-references: true
+  application:
+    name: crypto
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        proc:
+          param_null_passing: true
+  datasource:
+   url: jdbc:postgresql://${DB_HOST:10.3.245.161}:${DB_PORT:5435}/${DB_NAME:crypto_db}
+   username: ${DB_USER:postgres}
+   password: ${DB_PASS:5N7YUAo5x8A0qsTO122F}
+  liquibase:
+    change-log: classpath:/db/changelog.xml
+logging:
+  level:
+    client: DEBUG
